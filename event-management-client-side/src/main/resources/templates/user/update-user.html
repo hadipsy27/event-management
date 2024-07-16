@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-user.html}">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Webpage Title -->
+        <title>EMS - Update Profile</title>
+
+    </head>
+
+    <body data-bs-spy="scroll" data-bs-target="#navbarExample">
+
+        <div class="basic-1" layout:fragment="popular-event">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2 class="text-left mb-4">Update Profile</h2>
+                    </div> <!-- end of col -->
+                </div> <!-- end of row -->
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="card">
+                            <div class="card-body text-center">
+                                <img th:src="@{/asset/profile.jpg}" class="rounded-circle" width="200px" alt="">
+                                <div class="text-center pt-3">
+                                    <h4 th:text="${user.name}" ></h4>
+                                    <h6 class="text-secondary" th:text="${user.jobTitleYears}"></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="text-container">
+                            <!-- Contact Form -->
+                            <div class="card">
+                                <form class="form-horizontal" th:action="@{/user/update-user/{id} (id = ${user.id})}" th:object="${user}" th:method="PUT">
+                                    <div class="card-body">
+                                        <div class="form-group row" >
+                                            <label for="" class="col-sm-3 col-form-label">Name <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{name}"  placeholder="Enter fullname">
+                                                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Email <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" th:field="*{email}" placeholder="Enter email">
+                                                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                            <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Password <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="password" class="form-control" th:field="*{password}" placeholder="Enter password">
+                                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger"></p>
+                                                <span class="text-danger">Note : If you want to update, you need to re-enter the password</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label"> Number <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{phoneNumber}" placeholder="Enter phone number">
+                                                <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Job Status <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <select th:field="*{statusUser}">
+                                                    <option th:value="${user.statusUser.id}" th:text="${user.statusUser.name}">Select Job Status</option>
+                                                    <option th:each="jobStatus : ${status}" th:value="${jobStatus.id}" th:text="${jobStatus.name}"></option>
+                                                </select>
+                                                <p th:if="${#fields.hasErrors('statusUser')}" th:errors="*{statusUser}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Job Title<span
+                                                    class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{jobTitleYears}"  placeholder="Enter job title / years">
+                                                <p th:if="${#fields.hasErrors('jobTitleYears')}" th:errors="*{jobTitleYears}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Company<span
+                                                    class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{companyUniversity}"  placeholder="Enter company / university / school">
+                                                <p th:if="${#fields.hasErrors('companyUniversity')}" th:errors="*{companyUniversity}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Address</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" name="address" id="address" rows="5" th:field="*{address}" placeholder="Enter address"></textarea>
+                                                <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group d-flex justify-content-end">
+                                            <button type="submit" class="btn btn-block btn-outline-primary" style="text-align:right">Update</button>
+                                        </div>
+                                        <div>
+
+                                        </div>
+                                    </div>
+                            </div>
+                            <!-- /.card-body -->
+                            </form>
+                        </div>
+                        <!-- end of contact form -->
+                    </div> <!-- end of text-container -->
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+        </div>
+
+
+</html>

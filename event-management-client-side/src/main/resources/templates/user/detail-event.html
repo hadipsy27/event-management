@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-user.html}">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Webpage Title -->
+        <title>EMS - Detail Event</title>
+
+    </head>
+
+    <body data-bs-spy="scroll" data-bs-target="#navbarExample">
+
+        <div class="basic-1" layout:fragment="popular-event">
+            <!--Main Content-->
+            <div class="container">
+                <div class="row" style="margin-bottom: -7rem;">
+                    <div class="col-sm-8">
+                        <img th:src="@{'/asset/' + ${event.eventImage}}" alt="" width="100%" height="70%">
+                    </div>
+
+                    <div class="col-sm-4 p-4">
+                        <h5 th:text="${#temporals.format(event.eventStart, 'dd MMMM yyyy')}"></h5>
+                        <h3 class="badge bg-info" th:text="${event.eventStatus.name}"></h3>
+                        <h3 th:text="${event.name}"></h3>
+                        <p>By&nbsp;<span th:text="${event.user.name}"></span></p>
+                        <h6>Kouta&nbsp;<span th:text="${event.capacity}"></span></h6>
+                        <button type="button" class="btn text-white" style="background-color: #FD7E14;" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            Register Event
+                        </button>
+                    </div>
+                </div>
+
+                <hr>
+
+                <div class="row mt-4">
+                    <div class="col-md-8">
+                        <h3>Description</h3>
+                        <p th:text="${event.description}"></p>
+                    </div>
+
+                    <div class="col-md-4" style="padding-left: 30px;">
+                        <div>
+                            <h3>Date and Time</h3>
+                            <h6 th:text="${#temporals.format(event.eventStart, 'dd MMMM yyyy HH:mm')}"></h6>
+                            <h6 th:text="${#temporals.format(event.eventEnd, 'dd MMMM yyyy HH:mm')}"></h6>
+                        </div>
+
+                        <div class="pt-3">
+                            <h3>Location</h3>
+                            <p th:text="${event.location}"></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="pb-4">
+                        <h3>Topic</h3>
+                        <span class="badge bg-info" th:text="${event.topic.name}"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Are you sure to register event ?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">No</button>
+                            <a type="button" th:href="@{'/user/register/' + ${event.id}}" class="btn btn-primary">Yes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-admin.html}">
+
+    <head>
+        <title>Manage Event - Admin Dashboard</title>
+    </head>
+
+    <body class="hold-transition sidebar-mini layout-fixed">
+        <!-- Content Wrapper Contains page content -->
+        <div class="content-wrapper" layout:fragment="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <!-- Main row -->
+                    <div class="row">
+                        <div class="col-lg">
+                            <!-- First Label -->
+                            <div class="pt-4 pb-3 d-flex justify-content-between">
+                                <div>
+                                    <h2><b> Manage Event </b></h2>
+                                </div>
+                            </div>
+                            <div class="card bg-white">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table id="event" class="table table-bordered table-striped dataTable dtr-inline"
+                                                   aria-describedby="example1_info">
+                                                <thead>
+                                                    <tr>
+                                                        <th>No</th>
+                                                        <th>Event name</th>
+                                                        <th>Topic</th>
+                                                        <th>Status</th>
+                                                        <th>Kouta</th>
+                                                        <th class="notexport">Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr th:each="event, i : ${events}">
+                                                        <td th:text="${i.index + 1}"></td>
+                                                        <td th:text="${event.name}"></td>
+                                                        <td th:text="${event.topic.name}"></td>
+                                                        <td th:text="${event.eventStatus.name}"></td>
+                                                        <td th:text="${event.capacity}"></td>
+                                                        <td>
+                                                            <a class="btn btn-sm text-white btn-detail" th:href="@{'/admin/detail-event/' + ${event.id}}">Detail</a>
+                                                            <a class="btn btn-sm text-white btn-update" th:href="@{'/admin/update-event/' + ${event.id}}">Update</a>
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+    <th:block layout:fragment="scripts">
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+        <script th:src="@{/js/admin/event.js}"></script>
+    </th:block>
+</body>
+</html>

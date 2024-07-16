@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-admin.html}">
+
+    <head>
+        <title>Manage Account Event Organizer</title>
+    </head>
+
+    <body class="hold-transition sidebar-mini layout-fixed">
+        <!-- Content Wrapper Contains page content -->
+        <div class="content-wrapper" layout:fragment="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <div class="col-lg">
+                            <div class="pt-4 pb-3 d-flex justify-content-between">
+                                <div>
+                                    <h2><b> Manage Account Event Organizer </b></h2>
+                                </div>
+                                <div>
+                                    <a class="btn btn-sm text-white btn-add" th:href="@{/admin/create-eo}"><i class="uil uil-user pr-2"></i>Add New EO</a>
+                                </div>
+                            </div>
+                            <div class="card bg-white">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <table id="eventOrganizer" class="table table-bordered table-striped dataTable dtr-inline"
+                                                   aria-describedby="example1_info">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="notexport">No</th>
+                                                        <th>Full name</th>
+                                                        <th>Address</th>
+                                                        <th>Email</th>
+                                                        <th>Phone number</th>
+                                                        <th>Company/University</th>
+                                                        <th>Job/Title/Years</th>
+                                                        <th>Action</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    <th:block layout:fragment="scripts">
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <!--<script th:src="@{/js/csrf-token-before-send.js}"></script>-->
+        <script th:src="@{/js/admin/eo.js}"></script>
+    </th:block>
+</body>
+</html>

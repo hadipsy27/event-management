@@ -1,0 +1,96 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-admin.html}">
+
+    <head>
+        <title>Event Management</title>
+    </head>
+
+    <body class="hold-transition sidebar-mini layout-fixed">
+        <!-- Content Wrapper Contains page content -->
+        <div class="content-wrapper" layout:fragment="content-wrapper">
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="pt-4 pb-3">
+                        <h2><b> Update Profile User</b></h2>
+                    </div>
+                    <div class="card">
+                        <form class="form-horizontal" th:action="@{/admin/update-user/{id} (id = ${user.id})}" th:object="${user}" th:method="PUT">
+                            <div class="card-body">
+                                <div class="form-group row" >
+                                    <label for="" class="col-sm-3 col-form-label">Fullname <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" th:field="*{name}"  placeholder="Enter fullname">
+                                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Email <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" th:field="*{email}" placeholder="Enter email">
+                                        <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Password <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" th:field="*{password}" placeholder="Enter password">
+                                        <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger"></p>
+                                        <span class="text-danger">Note : If you want to update, you need to re-enter the password</span>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Mobile Phone Number <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" th:field="*{phoneNumber}" placeholder="Enter phone number">
+                                        <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Job Status <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <select th:field="*{statusUser}">
+                                            <option th:value="${user.statusUser.id}" th:text="${user.statusUser.name}">Select Job Status</option>
+                                            <option th:each="jobStatus : ${status}" th:value="${jobStatus.id}" th:text="${jobStatus.name}"></option>
+                                        </select>
+                                        <p th:if="${#fields.hasErrors('statusUser')}" th:errors="*{statusUser}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Job Title<span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" th:field="*{jobTitleYears}"  placeholder="Enter job title / years">
+                                        <p th:if="${#fields.hasErrors('jobTitleYears')}" th:errors="*{jobTitleYears}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Company/University/School <span
+                                            class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" th:field="*{companyUniversity}"  placeholder="Enter company / university / school">
+                                        <p th:if="${#fields.hasErrors('companyUniversity')}" th:errors="*{companyUniversity}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Address</label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" name="address" id="address" rows="5" th:field="*{address}" placeholder="Enter address"></textarea>
+                                        <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row d-flex justify-content-end">
+                                        <button type="submit" class="btn btn-md text-white btn-create">
+                                            Update User
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </body>
+</html>

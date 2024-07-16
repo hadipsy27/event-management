@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-user.html}">
+
+    <head>
+        <title>EMS - User LandingPage</title>
+    </head>
+
+    <body data-bs-spy="scroll" data-bs-target="#navbarExample">
+        <div class="counter" layout:fragment="counter">
+            <div style="margin-top: 130px;">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- Counter -->
+                            <div class="counter-container">
+                                <div class="counter-cell">
+                                    <div data-purecounter-start="0" th:data-purecounter-end="${countEvent}" data-purecounter-duration="3"
+                                         class="purecounter text-white">1</div>
+                                    <div class="counter-info text-white">Total Event</div>
+                                </div> <!-- end of counter-cell -->
+                                <div class="counter-cell">
+                                    <div data-purecounter-start="0" th:data-purecounter-end="${countUser}"
+                                         data-purecounter-duration="3" class="purecounter text-white">1</div>
+                                    <div class="counter-info text-white">Total User</div>
+                                </div> <!-- end of counter-cell -->
+                                <div class="counter-cell">
+                                    <div data-purecounter-start="0" th:data-purecounter-end="${countParticipant}" data-purecounter-duration="3"
+                                         class="purecounter text-white">1</div>
+                                    <div class="counter-info text-white">Total Participant</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-4 bg-gray" layout:fragment="popular-event" style="padding-top: 1rem;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="h2-heading text-center">Popular Event</h2>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class=" main-carousel" id="popularEvent">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="services p-4" layout:fragment="main-event">
+            <div class="row">
+                <div class="col-lg-12 pt-3">
+                    <h2 class="h2-heading text-center">Event</h2>
+                </div> 
+            </div>
+            <div class="row">
+                <div class="container">
+                    <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="pills-all-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-all" type="button" role="tab" aria-controls="pills-all"
+                                    aria-selected="true">All</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-practical-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-practical" type="button" role="tab" aria-controls="pills-practical"
+                                    aria-selected="false">Practical Bussiness</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-profesional-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-profesional" type="button" role="tab" aria-controls="pills-profesional"
+                                    aria-selected="false">Professional Skills</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-motivation-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-motivation" type="button" role="tab" aria-controls="pills-motivation"
+                                    aria-selected="false">Motivation</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-money-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-money" type="button" role="tab" aria-controls="pills-money"
+                                    aria-selected="false">Money Management</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-parenting-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-parenting" type="button" role="tab" aria-controls="pills-parenting"
+                                    aria-selected="false">Parenting</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-sport-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-sport" type="button" role="tab" aria-controls="pills-sport"
+                                    aria-selected="false">Sports</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="pills-healty-tab" data-bs-toggle="pill"
+                                    data-bs-target="#pills-healty" type="button" role="tab" aria-controls="pills-healty"
+                                    aria-selected="false">Healty</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-all" role="tabpanel" aria-labelledby="pills-all-tab">
+                            <div class="row d-flex justify-content-around" id="allEvent">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="pills-practical" role="tabpanel" aria-labelledby="pills-practical-tab">
+                            <div class="row d-flex justify-content-around" id="practicalEvent">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="pills-profesional" role="tabpanel" aria-labelledby="pills-profesional-tab">
+                            <div class="row d-flex justify-content-around" id="profesionalEvent">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="pills-motivation" role="tabpanel" aria-labelledby="pills-motivation-tab">
+                            <div class="row d-flex justify-content-around" id="motivationEvent">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="pills-money" role="tabpanel" aria-labelledby="pills-money-tab">
+                            <div class="row d-flex justify-content-around" id="moneyEvent">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="pills-parenting" role="tabpanel" aria-labelledby="pills-parenting-tab">
+                            <div class="row d-flex justify-content-around" id="parentingEvent">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="pills-sports" role="tabpanel" aria-labelledby="pills-sports-tab">
+                            <div class="row d-flex justify-content-around" id="sportsEvent">
+
+                            </div>
+                        </div>
+                        <div class="tab-pane fade show active" id="pills-healty" role="tabpanel" aria-labelledby="pills-healty-tab">
+                            <div class="row d-flex justify-content-around" id="healtyEvent">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <th:block layout:fragment="scripts">
+                <script src="https://code.jquery.com/jquery-3.6.0.js" crossorigin="anonymous"></script>
+                <script th:src="@{/js/user/carousel.js}"></script>
+            </th:block>
+    </body>
+</html>

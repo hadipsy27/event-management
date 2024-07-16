@@ -1,0 +1,150 @@
+@import url("all.min.css");
+@import url("adminlte.min.css");
+@import url("https://unicons.iconscout.com/release/v4.0.0/css/line.css");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css");
+@import url("https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css");
+@import url("https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap4.min.css");
+@import url("https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css");
+@import url("https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/css/tempusdominus-bootstrap-4.min.css");
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css");
+
+.nav-pills .nav-link.active,
+.nav-pills .show>.nav-link {
+    color: #ED1B24;
+    background-color: #EEE;
+}
+
+.nav-pills .nav-link:not(.active):hover {
+    color: #ED1B24 !important;
+}
+
+.nav-pills .nav-link {
+    color: #18489D;
+}
+
+.uil-sidebar {
+    font-size: 30px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+a{
+    color: #18489D;
+}
+
+a i.fa-bars{
+    color: #ED1B24;
+}
+
+a i.fa-bars:hover{
+    color: #18489D;
+}
+
+i.dropdown{
+    color: #ED1B24;
+}
+i.dropdown:hover{
+    color: #18489D;
+}
+
+.dropdown-item{
+    color: #18489D !important;
+}
+
+.dropdown-item:hover{
+    color: #ED1B24 !important;
+}
+
+img.img-circle{
+    margin-top: -6px;
+}
+
+div.info-box, div.card, .main-sidebar, .main-header{
+    background-color: #EEEEEE;
+}
+
+div.content-wrapper{
+    background-color: #FFFFFF;
+}
+
+i.event{
+    color: #6F42C1;
+}
+
+i.participant{
+    color: #FD7E14;
+}
+
+i.red{
+    color: #ED1B24;
+}
+
+i.blue{
+    color: #18489D;
+}
+
+canvas#sales-chart{
+    width: 204px;
+    height: 400px;
+}
+
+img.animation__shake{
+    height: 240px;
+    width: 480px;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #FFFFFF;
+}
+
+.brand-link .brand-image {
+    max-height: 75px;
+}
+
+.btn-add, .btn-detail{
+    background-color: #6F42C1;
+}
+
+.btn-add:hover, .btn-detail:hover{
+    background-color: #4D2E87;
+}
+
+.btn-delete{
+    background-color: #ED1B24;
+}
+
+.btn-delete:hover{
+    background-color: #A51219;
+}
+
+.btn-list, .btn-cancel{
+    background-color: #FD7E14;
+}
+
+.btn-create, .btn-update{
+    background-color: #FD7E14;
+    margin-right: 15px
+}
+
+.btn-create:hover, .btn-list:hover,.btn-update:hover, .btn-cancel:hover{
+    background-color: #CF6003;
+}
+
+.btn-no{
+    background-color: #18489D;
+}
+
+.btn-no:hover{
+    background-color: #10326D;
+}
+
+select{
+    border : 1px solid rgba(0, 0, 0, 0.125);
+    height: 38px;
+    color: #495057;
+    border-radius: 0.25rem;
+}

@@ -1,0 +1,32 @@
+@import url("user/bootstrap.min.css");
+@import url("user/fontawesome-all.min.css");
+@import url("user/swiper.css");
+@import url("user/styles.css");
+@import url("user/slider.css");
+@import url("https://unicons.iconscout.com/release/v4.0.0/css/line.css");
+@import url("https://unpkg.com/flickity@2/dist/flickity.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap");
+
+.counter{
+    background-image: url('/asset/bg1.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.btn-detail{
+    background-color: #6F42C1;
+}
+
+.btn-detail:hover{
+    background-color: #4D2E87;
+}
+
+.btn-create{
+    background-color: #FD7E14;
+    margin-right: 15px
+}
+
+.btn-create:hover{
+    background-color: #CF6003;
+}

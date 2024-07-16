@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-anonymous.html}">
+
+    <head>
+        <title>EMS - Create User</title>       
+    </head>
+
+    <body>
+        <main>
+            <div class="basic-1 bg-gray" layout:fragment="popular-event">
+                <!--Main Content-->
+                <div class="container-fluid p-0">
+                    <div class="row no-gutters">
+                        <div class="col-sm-7 login-card-wrapper mx-auto">
+                            <div class="card register-card">
+                                <div class="card-body">
+                                    <h2 class="login-card-title">Signup</h2>
+                                    <p class="login-card-description">Create your account</p>
+                                    <form class="form-horizontal" th:action="@{/user/create-user}" th:object="${userDto}" th:method="POST">
+                                        <div class="form-group row" >
+                                            <label for="" class="col-sm-3 col-form-label">Fullname <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{name}"  placeholder="Enter fullname">
+                                                <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Email <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="email" class="form-control" th:field="*{email}" placeholder="Enter email">
+                                                <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Password <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="password" class="form-control" th:field="*{password}" placeholder="Enter password">
+                                                <p th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Mobile Phone Number <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{phoneNumber}" placeholder="Enter phone number">
+                                                <p th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-3 col-form-label">Job Status <span class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <select th:field="*{statusUser}">
+                                                    <option th:value="null">Select Job Status</option>
+                                                    <option th:each="jobStatus : ${status}" th:value="${jobStatus.id}" th:text="${jobStatus.name}"></option>
+                                                </select>
+                                                <p th:if="${#fields.hasErrors('statusUser')}" th:errors="*{statusUser}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Job Title<span
+                                                    class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{jobTitleYears}"  placeholder="Enter job title / years">
+                                                <p th:if="${#fields.hasErrors('jobTitleYears')}" th:errors="*{jobTitleYears}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Company/University/School <span
+                                                    class="text-danger">*</span></label>
+                                            <div class="col-sm-9">
+                                                <input type="text" class="form-control" th:field="*{companyUniversity}"  placeholder="Enter company / university / school">
+                                                <p th:if="${#fields.hasErrors('companyUniversity')}" th:errors="*{companyUniversity}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="" class="col-sm-3 col-form-label">Address</label>
+                                            <div class="col-sm-9">
+                                                <textarea class="form-control" name="address" id="address" rows="5" th:field="*{address}" placeholder="Enter address"></textarea>
+                                                <p th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="alert alert-danger"></p>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex justify-content-end" style="margin-right: -15px;">
+                                            <button type="submit" class="btn btn-md text-white btn-create">
+                                                Create Account
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <p class="text-secondary mt-2 mb-2 text-center">have an account?<a th:href="@{/login}" class="text-reset"> <b>Login</b></a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    <th:block layout:fragment="scripts">
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    </th:block>
+</body>
+
+</html>

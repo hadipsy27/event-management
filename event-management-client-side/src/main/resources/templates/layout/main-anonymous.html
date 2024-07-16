@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>Event Management</title>
+        <link th:href="@{/asset/EMS_Small.png}" href="../../static/asset/EMS_Small.png" rel="icon">
+        <link th:href="@{/css/styles-user.css}" rel="stylesheet">
+    </head>
+
+    <body data-bs-spy="scroll" data-bs-target="#navbarExample">
+
+        <!-- Navigation -->
+        <nav id="navbarExample" class="navbar navbar-expand-lg fixed-top navbar-light" aria-label="Main navigation">
+            <div class="container">
+
+                <!-- Image Logo -->
+                <a class="navbar-brand logo-image" href="index.html"><img th:src="@{/asset/EMS_Big.png}" style="width: 100px; height: 50px; margin-top: -25px;" alt="alternative"></a>
+
+                <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse"
+                        aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse offcanvas-collapse mb-3" id="navbarsExampleDefault">
+                    <ul class="navbar-nav ms-auto navbar-nav-scroll">
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/user}">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Help</a>
+                        </li>
+
+                    </ul>
+                    <span class="nav-item">
+                        <a class="btn  btn-sm" th:href="@{/login}" style="background-color: #FD7E14; color: white; text-decoration: none;">Login</a>
+                    </span>
+                </div>
+            </div>
+        </nav>
+
+        <div layout:fragment="counter">
+            <!--Main Content-->
+        </div>
+
+        <div layout:fragment="popular-event">
+            <!--Main Content-->
+        </div>
+
+        <div layout:fragment="main-event">
+            <!--Main Content-->
+        </div>
+
+        <!-- Footer -->
+        <div class="footer bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="footer-col first">
+                            <h6>About Website</h6>
+                            <p class="p-small">Our website is a website to organize your event well, provide the best for you and always accept input from users</p>
+                        </div> <!-- end of footer-col -->
+                        <div class="footer-col second">
+                            <h6>Our Office</h6>
+                            <ul class="list-unstyled li-space-lg p-small">
+                                <p class="p-small">APL Tower Lantai 37, Jl. Letjen S. Parman Kav. 28, RT.12/RW.6, Tj. Duren Sel., Jakarta Barat, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11470</p>
+                            </ul>
+                        </div> <!-- end of footer-col -->
+                        <div class="footer-col third">
+                            <span class="fa-stack">
+                                <a href="#">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-facebook-f fa-stack-1x"></i>
+                                </a>
+                            </span>
+                            <span class="fa-stack">
+                                <a href="#">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-twitter fa-stack-1x"></i>
+                                </a>
+                            </span>
+                            <span class="fa-stack">
+                                <a href="#">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-pinterest-p fa-stack-1x"></i>
+                                </a>
+                            </span>
+                            <span class="fa-stack">
+                                <a href="#">
+                                    <i class="fas fa-circle fa-stack-2x"></i>
+                                    <i class="fab fa-instagram fa-stack-1x"></i>
+                                </a>
+                            </span>
+                            <p class="p-small">We would love to hear from you <a
+                                    href="mailto:mcc@ms.mii.co.id"><strong>mcc@ms.mii.co.id</strong></a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Copyright -->
+        <div class="copyright bg-gray">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p class="p-small">Copyright © <a href="#your-link">MCC 59 & 60 - Group 2</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Back To Top Button -->
+        <button onclick="topFunction()" id="myBtn">
+            <img th:src="@{/asset/up-arrow.png}" alt="alternative">
+        </button>
+        <!-- end of back to top button -->
+
+        <!-- Scripts -->
+        <script th:src="@{/js/jquery.min.js}" src="../../static/js/jquery.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script th:src="@{/js/user/bootstrap.min.js}"></script>
+        <script th:src="@{/js/user/swiper.min.js}"></script>
+        <script th:src="@{/js/user/purecounter.min.js}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+        <script th:src="@{/js/user/scripts.js}"></script>
+        <script>
+            $('.main-carousel').flickity({
+                // options
+                cellAlign: 'left',
+                contain: true
+            });
+        </script>
+    <th:block layout:fragment="scripts">
+        <!--Optional JS-->
+    </th:block>
+</body>
+</html>

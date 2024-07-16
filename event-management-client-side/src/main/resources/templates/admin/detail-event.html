@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-admin.html}">
+
+    <head>
+        <title>Event Management</title>
+    </head>
+
+    <body class="hold-transition sidebar-mini layout-fixed">
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper" layout:fragment="content-wrapper">
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+                    <div class="pt-4 pb-3 ">
+                        <h2><b> Detail Event </b></h2>
+                    </div>
+
+                    <!-- Main row -->
+                    <div class="row">
+                        <div class="col-lg">
+                            <div class="card bg-white">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-sm-8">
+                                            <img alt="" th:src="@{'/asset/' + ${event.eventImage}}" width="100%" height="90%"/>
+                                        </div>
+                                        <div class="col-sm-4 pt-4" style="text-align: left !important;">
+                                            <h4 th:text="${#temporals.format(event.eventStart, 'dd MMMM yyyy')}"></h4>
+                                            <h3 th:text="${event.name}"></h3>
+                                            <div class='d-flex'><h6>By</h6>&nbsp;<h6 th:text="${event.user.name}"></h6></div>
+                                            <div class='d-flex'><h6>Kouta</h6>&nbsp;<h6 th:text="${event.capacity}"></h6></div>
+                                        </div>
+                                    </div>
+                                    <div class="row pt-4">
+                                        <div class="col-sm-8">
+                                            <h3 th:text="${event.eventStatus.name}"></h3>
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <button type="button" class="btn text-white btn-cancel" data-toggle="modal" data-target="#exampleModalCenter">
+                                                Cancel Event
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h3>Description</h3>
+                                            <p th:text="${event.description}"></p>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div>
+                                                <h3>Date</h3>
+                                                <h6 th:text="${#temporals.format(event.eventStart, 'dd MMMM yyyy HH:mm')}"></h6>
+                                                <h6>-</h6>
+                                                <h6 th:text="${#temporals.format(event.eventEnd, 'dd MMMM yyyy HH:mm')}"></h6>
+                                            </div>
+
+                                            <div class="pt-3">
+                                                <h3>Location</h3>
+                                                <h6 th:text="${event.location}"></h6>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="pb-4">
+                                        <h3>Topic</h3>
+                                        <span class="badge badge-pill badge-info" th:text="${event.topic.name}"></span>
+                                    </div>
+                                    <hr>
+                                    <div class="col-sm-12">
+                                        <table id="event" class="table table-bordered table-striped dataTable dtr-inline"
+                                               aria-describedby="example1_info">
+                                            <thead>
+                                                <tr>
+                                                    <th>No</th>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr th:each="participant, i : ${participant}">
+                                                    <td th:text="${i.index +1}"></td>
+                                                    <td th:text="${participant.user.name}"></td>
+                                                    <td th:text="${participant.user.email}"></td>
+                                                    <td th:text="${participant.user.phoneNumber}"></td>
+                                                    <td th:text="${participant.registrationStatus.name}"></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Are you sure to cancel event ?</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn text-white btn-no" data-dismiss="modal">No</button>
+                            <a type="button" th:href="@{'/admin/cancel-event/' + ${event.id}}" class="btn text-white btn-delete">Yes</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <th:block layout:fragment="scripts">
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.9/js/responsive.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
+        <script th:src="@{/js/admin/event.js}"></script>
+    </th:block>
+    </body>
+</html>

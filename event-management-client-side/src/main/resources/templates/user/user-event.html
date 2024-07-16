@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-user.html}">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Webpage Title -->
+        <title>EMS - My Event</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    </head>
+
+    <body data-bs-spy="scroll" data-bs-target="#navbarExample">
+        <!-- end of navigation -->
+        <div class="basic-3" layout:fragment="popular-event">
+            <div class="container">
+                <h2>All Registered Event</h2>
+            </div>
+            <div class="container mb-4">
+                <div class="card shadow p-3 mb-5 bg-body rounded">
+                    <div class="card-body">
+                        <table id="userEvent" class="table table-striped" style="width:100%">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Event name</th>
+                                    <th>Topic</th>
+                                    <th>Location</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr th:each="my, i : ${myevent}">
+                                    <td th:text="${i.index + 1}"></td>
+                                    <td th:text="${my[1]}"></td>
+                                    <td th:text="${my[4]}"></td>
+                                    <td th:text="${my[2]}"></td>
+                                    <td th:text="${my[3]}"></td>
+                                    <td>
+                                        <a class="btn btn-sm btn-primary" th:href="@{'/user/detail-event/' + ${my[0]}}">Detail</a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <th:block layout:fragment="scripts">
+        <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap5.min.js"></script>
+        <script src="js/scripts.js"></script> <!-- Custom scripts -->
+        <script>
+            $(document).ready(function () {
+                $('#userEvent').DataTable();
+            });
+        </script>
+    </th:block>
+</body>
+
+</html>

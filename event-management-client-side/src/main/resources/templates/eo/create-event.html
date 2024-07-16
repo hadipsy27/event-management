@@ -1,0 +1,125 @@
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/main-eo.html}">
+
+    <head>
+        <title>Event Management</title>
+    </head>
+
+    <body class="hold-transition sidebar-mini layout-fixed">
+
+        <!-- Content Wrapper Contains page content -->
+        <div class="content-wrapper" layout:fragment="content-wrapper">
+
+
+            <!-- Main content -->
+            <section class="content">
+                <div class="container-fluid">
+
+                    <div class="pt-4 pb-3">
+                        <h2><b>Create Event</b></h2>
+                    </div>
+                    <div class="card bg-white">
+                        <form class="form-horizontal"th:action="@{/eo/create-event}" th:object="${eventDto}" th:method="POST" enctype="multipart/form-data">
+                            <div class="card-body">
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Event Name <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" th:field="*{name}" placeholder="Enter Event Name">
+                                        <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Registration Start <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="date" th:field="*{registrationStart}" class="form-control">
+                                        <p th:if="${#fields.hasErrors('registrationStart')}" th:errors="*{registrationStart}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Registration End <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="date" th:field="*{registrationEnd}" class="form-control">
+                                        <p th:if="${#fields.hasErrors('registrationEnd')}" th:errors="*{registrationEnd}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Event Start <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="datetime-local" th:field="*{eventStart}" class="form-control">
+                                        <p th:if="${#fields.hasErrors('eventStart')}" th:errors="*{eventStart}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Event End <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="datetime-local" th:field="*{eventEnd}" class="form-control">
+                                        <p th:if="${#fields.hasErrors('eventEnd')}" th:errors="*{eventEnd}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Location <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" th:field="*{location}" class="form-control" placeholder="Enter Location">
+                                        <p th:if="${#fields.hasErrors('location')}" th:errors="*{location}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Topic <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" th:field="*{topic}">
+                                            <option th:value="null">Select Topic</option>
+                                            <option th:each="topic : ${topic}" th:value="${topic.id}" th:text="${topic.name}"></option>
+                                        </select>
+                                        <p th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Status <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control" th:field="*{eventStatus}">
+                                            <option th:value="null">Select Event Status</option>
+                                            <option th:each="eventStatus : ${status}" th:value="${eventStatus.id}" th:text="${eventStatus.name}"></option>
+                                        </select>
+                                        <p th:if="${#fields.hasErrors('eventStatus')}" th:errors="*{eventStatus}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3">Kouta <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <input type="text" th:field="*{capacity}" class="form-control" placeholder="Enter Kouta">
+                                        <p th:if="${#fields.hasErrors('capacity')}" th:errors="*{capacity}" class="alert alert-danger"></p>
+                                    </div> 
+                                </div>
+                                <div class="form-group row pb-3">
+                                    <label for="" class="col-sm-3 col-form-label">Image <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9 custom-file">
+                                        <input type="file" name="image" accept="image/png, image/jpeg"/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="" class="col-sm-3 col-form-label">Description <span class="text-danger">*</span></label>
+                                    <div class="col-sm-9">
+                                        <textarea class="form-control" th:field="*{description}" name="address" id="address" rows="5" placeholder=""></textarea>
+                                        <p th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="alert alert-danger"></p>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-end">
+                                    <button type="submit" class="btn btn-md text-white btn-update">
+                                        Create Event
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+            </section>
+        </div>
+
+    <th:block layout:fragment="scripts">
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.0/moment.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/tempusdominus-bootstrap-4/5.39.0/js/tempusdominus-bootstrap-4.min.js"></script>
+        <script th:src="@{/js/event/date.js}"></script>
+    </th:block>
+
+</body>
+</html>
